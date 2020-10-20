@@ -14,7 +14,7 @@ fi
 
 echo "*********************************************"
 echo "*"
-echo "* Image : aws-ami-php7"
+echo "* Image : aws-php7"
 echo -n "* "
 head -n 1 /etc/version
 echo "*"
