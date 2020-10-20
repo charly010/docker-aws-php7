@@ -3,9 +3,9 @@ FROM amazonlinux
 #
 # COMMAND :
 #
-# Build : docker build -t eurelis-php7 .
+# Build : docker build -t charly010-php7 .
 #
-# Run: docker run -d -p 9080:80 -it eurelis-php7
+# Run: docker run -d -p 9080:80 -it charly010-php7
 # Shell: docker exec -it XXXXX_XXXXX /bin/bash
 # Stop: docker stop XXXXX_XXXXX
 #
@@ -48,53 +48,34 @@ RUN python --version \
 RUN yum install -y httpd24
 
 RUN yum install -y \
-       php72 \
-       php72-pdo \
-       php72-pdo_mysql \
-       php72-mysqli \
-       php72-ftp \
-       php72-soap \
-       php72-gmp \
-       php72-dom \
-       php72-bcmath \
-       php72-gd \
-       php72-odbc \
-       php72-gettext \
-       php72-xmlreader \
-       php72-xmlwriter \
-       php72-xmlrpc \
-       php72-bz2 \
-       php72-curl \
-       php72-ctype \
-       php72-session \
-       php72-redis \
-       php72-zlib \
-       php72-mbstring \
-       php72-simplexml \
-       php72-tokenizer \
-       php72-opcache \
-       php72-intl \
-       php72-posix \
-       php72-devel
-
-#
-# ImageMagick
-#
-RUN cd /opt/ \
-       && curl -O http://www.imagemagick.org/download/ImageMagick-6.9.10-42.tar.gz \
-       && gunzip ImageMagick-6.9.10-42.tar.gz \
-       && tar xvf ImageMagick-6.9.10-42.tar \
-       && cd ImageMagick-6.9.10-42 \
-       && ./configure \
-       && make \
-       && make install \
-       && ldconfig /usr/local/lib \
-       && cd .. \
-       && rm ImageMagick-6.9.10-42.tar \
-       && rm -R ImageMagick-6.9.10-42/
-RUN yum install -y php7-pear \
-       && pecl7 install imagick \
-       && echo "extension=imagick.so" > /etc/php.d/imagick.ini
+       php74 \
+       php74-pdo \
+       php74-pdo_mysql \
+       php74-mysqli \
+       php74-ftp \
+       php74-soap \
+       php74-gmp \
+       php74-dom \
+       php74-bcmath \
+       php74-gd \
+       php74-odbc \
+       php74-gettext \
+       php74-xmlreader \
+       php74-xmlwriter \
+       php74-xmlrpc \
+       php74-bz2 \
+       php74-curl \
+       php74-ctype \
+       php74-session \
+       php74-redis \
+       php74-zlib \
+       php74-mbstring \
+       php74-simplexml \
+       php74-tokenizer \
+       php74-opcache \
+       php74-intl \
+       php74-posix \
+       php74-devel
 
 #
 # Install MySQL
@@ -157,12 +138,12 @@ RUN cd /opt \
        && ./configure \
        && make \
        && make install \
-       && touch /etc/php-7.2.d/90-xdebug.ini \
-       && echo "[xdebug]" > /etc/php-7.2.d/90-xdebug.ini \
-       && echo "zend_extension = /usr/lib64/php/7.2/modules/xdebug.so" >> /etc/php-7.2.d/90-xdebug.ini \
-       && echo "xdebug.remote_enable=true" >> /etc/php-7.2.d/90-xdebug.ini \
-       && echo "xdebug.remote_autostart=true" >> /etc/php-7.2.d/90-xdebug.ini \
-       && echo "xdebug.remote_host=host.docker.internal" >> /etc/php-7.2.d/90-xdebug.ini \
+       && touch /etc/php-7.4.d/90-xdebug.ini \
+       && echo "[xdebug]" > /etc/php-7.4.d/90-xdebug.ini \
+       && echo "zend_extension = /usr/lib64/php/7.4/modules/xdebug.so" >> /etc/php-7.4.d/90-xdebug.ini \
+       && echo "xdebug.remote_enable=true" >> /etc/php-7.4.d/90-xdebug.ini \
+       && echo "xdebug.remote_autostart=true" >> /etc/php-7.4.d/90-xdebug.ini \
+       && echo "xdebug.remote_host=host.docker.internal" >> /etc/php-7.4.d/90-xdebug.ini \
        # Ajout depuis docker 18.3 : host.docker.internal pointe vers le host
        && cd .. \
        && rm xdebug-2.6.0.tgz \
